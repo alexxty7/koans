@@ -14,17 +14,17 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
-  # WRITE THIS CODE
-  a,b,c = [a,b,c].sort
-  raise TriangleError, "impossible triangle" if [a,b,c].min <= 0
-  raise TriangleError, "no two sides can be < than the third" if a + b <= c
+  a, b, c = [a, b, c].sort
+  raise TriangleError, 'impossible triangle' if [a, b, c].min <= 0
+  raise TriangleError, 'no two sides can be < than the third' if a + b <= c
 
-  if a == b && b == c
-  	:equilateral
-  elsif a == b || b == c || a == c
-  	:isosceles
+  case [a, b, c].uniq.count
+  when 1
+    :equilateral
+  when 2
+    :isosceles
   else
-  	:scalene
+    :scalene
   end
 end
 

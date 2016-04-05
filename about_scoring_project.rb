@@ -35,15 +35,16 @@ def score(dice)
   identical_dices = dice.inject(Hash.new(0)) { |res, el| res[el] +=1; res } 
 
   identical_dices.each do |k, v|
-    if v >= 3 && k == 1
+    case
+    when v >= 3 && k == 1
       score += 1000 + 100*(v-3)
-    elsif v >= 3 && k == 5
+    when v >= 3 && k == 5
       score += 100*k + 50*(v-3)
-    elsif v >= 3
+    when v >= 3
       score += 100*k
-    elsif v <= 3 && k == 1
+    when v <= 3 && k == 1
       score += 100*v
-    elsif v <= 3 && k == 5
+    when v <= 3 && k == 5
       score += 50*v
     end
   end
